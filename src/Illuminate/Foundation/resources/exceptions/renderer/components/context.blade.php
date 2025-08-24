@@ -13,17 +13,17 @@
         <span class="font-semibold text-gray-900 dark:text-white">Headers</span>
     </div>
 
-    <dl class="mt-1 grid grid-cols-1 rounded border dark:border-gray-800">
+    <dl class="mt-1 grid grid-cols-1 rounded-sm border dark:border-gray-800">
         @forelse ($exception->requestHeaders() as $key => $value)
             <div class="flex items-center gap-2 {{ $loop->first ? '' : 'border-t' }} dark:border-gray-800">
                 <span
                     data-tippy-content="{{ $key }}"
-                    class="lg:text-md w-[8rem] flex-none cursor-pointer truncate border-r px-5 py-3 text-sm dark:border-gray-800 lg:w-[12rem]"
+                    class="lg:text-md w-32 flex-none cursor-pointer truncate border-r px-5 py-3 text-sm dark:border-gray-800 lg:w-48"
                 >
                     {{ $key }}
                 </span>
                 <span
-                    class="min-w-0 flex-grow"
+                    class="min-w-0 grow"
                     style="
                         -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 1rem, #000 calc(100% - 3rem), transparent calc(100% - 1rem));
                     "
@@ -33,7 +33,7 @@
             </div>
         @empty
             <span
-                class="min-w-0 flex-grow"
+                class="min-w-0 grow"
                 style="-webkit-mask-image: linear-gradient(90deg, transparent 0, #000 1rem, #000 calc(100% - 3rem), transparent calc(100% - 1rem))"
             >
                 <pre class="scrollbar-hidden mx-5 my-3 overflow-y-hidden text-xs lg:text-sm"><code class="overflow-y-hidden scrollbar-hidden overflow-x-scroll scrollbar-hidden-x">No headers data</code></pre>
@@ -45,10 +45,10 @@
         <span class="font-semibold text-gray-900 dark:text-white">Body</span>
     </div>
 
-    <div class="mt-1 rounded border dark:border-gray-800">
+    <div class="mt-1 rounded-sm border dark:border-gray-800">
         <div class="flex items-center">
             <span
-                class="min-w-0 flex-grow"
+                class="min-w-0 grow"
                 style="-webkit-mask-image: linear-gradient(90deg, transparent 0, #000 1rem, #000 calc(100% - 3rem), transparent calc(100% - 1rem))"
             >
                 <pre class="scrollbar-hidden mx-5 my-3 overflow-y-hidden text-xs lg:text-sm"><code class="overflow-y-hidden scrollbar-hidden overflow-x-scroll scrollbar-hidden-x">{{ $exception->requestBody() ?: 'No body data' }}</code></pre>
@@ -67,16 +67,16 @@
         <span class="font-semibold text-gray-900 dark:text-white"> Routing </span>
     </div>
 
-    <dl class="mt-1 grid grid-cols-1 rounded border dark:border-gray-800">
+    <dl class="mt-1 grid grid-cols-1 rounded-sm border dark:border-gray-800">
         @forelse ($exception->applicationRouteContext() as $name => $value)
             <div class="flex items-center gap-2 {{ $loop->first ? '' : 'border-t' }} dark:border-gray-800">
                 <span
                     data-tippy-content="{{ $name }}"
-                    class="lg:text-md w-[8rem] flex-none cursor-pointer truncate border-r px-5 py-3 text-sm dark:border-gray-800 lg:w-[12rem]"
+                    class="lg:text-md w-32 flex-none cursor-pointer truncate border-r px-5 py-3 text-sm dark:border-gray-800 lg:w-48"
                     >{{ $name }}</span
                 >
                 <span
-                    class="min-w-0 flex-grow"
+                    class="min-w-0 grow"
                     style="
                         -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 1rem, #000 calc(100% - 3rem), transparent calc(100% - 1rem));
                     "
@@ -86,7 +86,7 @@
             </div>
         @empty
             <span
-                class="min-w-0 flex-grow"
+                class="min-w-0 grow"
                 style="-webkit-mask-image: linear-gradient(90deg, transparent 0, #000 1rem, #000 calc(100% - 3rem), transparent calc(100% - 1rem))"
             >
                 <pre class="scrollbar-hidden mx-5 my-3 overflow-y-hidden text-xs lg:text-sm"><code class="overflow-y-hidden scrollbar-hidden overflow-x-scroll scrollbar-hidden-x">No routing data</code></pre>
@@ -99,10 +99,10 @@
             <span class="text-gray-900 dark:text-white text-sm"> Routing Parameters </span>
         </div>
 
-        <div class="mt-1 rounded border dark:border-gray-800">
+        <div class="mt-1 rounded-sm border dark:border-gray-800">
             <div class="flex items-center">
                 <span
-                    class="min-w-0 flex-grow"
+                    class="min-w-0 grow"
                     style="-webkit-mask-image: linear-gradient(90deg, transparent 0, #000 1rem, #000 calc(100% - 3rem), transparent calc(100% - 1rem))"
                 >
                     <pre class="scrollbar-hidden mx-5 my-3 overflow-y-hidden text-xs lg:text-sm"><code class="overflow-y-hidden scrollbar-hidden overflow-x-scroll scrollbar-hidden-x">{{ $routeParametersContext }}</code></pre>
@@ -120,15 +120,15 @@
         </span>
     </div>
 
-    <dl class="mt-1 grid grid-cols-1 rounded border dark:border-gray-800">
+    <dl class="mt-1 grid grid-cols-1 rounded-sm border dark:border-gray-800">
         @forelse ($exception->applicationQueries() as ['connectionName' => $connectionName, 'sql' => $sql, 'time' => $time])
             <div class="flex items-center gap-2 {{ $loop->first ? '' : 'border-t' }} dark:border-gray-800">
-                <div class="lg:text-md w-[8rem] flex-none truncate border-r px-5 py-3 text-sm dark:border-gray-800 lg:w-[12rem]">
+                <div class="lg:text-md w-32 flex-none truncate border-r px-5 py-3 text-sm dark:border-gray-800 lg:w-48">
                     <span>{{ $connectionName }}</span>
                     <span class="hidden text-xs text-gray-500 lg:inline-block">({{ $time }} ms)</span>
                 </div>
                 <span
-                    class="min-w-0 flex-grow"
+                    class="min-w-0 grow"
                     style="
                         -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 1rem, #000 calc(100% - 3rem), transparent calc(100% - 1rem));
                     "
@@ -138,7 +138,7 @@
             </div>
         @empty
             <span
-                class="min-w-0 flex-grow"
+                class="min-w-0 grow"
                 style="-webkit-mask-image: linear-gradient(90deg, transparent 0, #000 1rem, #000 calc(100% - 3rem), transparent calc(100% - 1rem))"
             >
                 <pre class="scrollbar-hidden mx-5 my-3 overflow-y-hidden text-xs lg:text-sm"><code class="overflow-y-hidden scrollbar-hidden overflow-x-scroll scrollbar-hidden-x">No query data</code></pre>
